@@ -1,0 +1,38 @@
+print("Zakat Calculator App")
+# Constants
+NISSAB_GOLD = 85 * 612.36  # grams of gold value in USD
+NISSAB_SILVER = 595 * 612.36  # grams of silver value in USD
+def get_zakat_asset_value():
+  print("Select asset type:")
+  print("1. Cash")
+  print("2. Gold")
+  print("3. Silver")
+  print("4. Stocks")
+  print("5. Business income")
+  
+  choice = input("Enter choice (1/2/3/4/5): ")
+  
+  if choice == "1":  # Added colon here
+    return float(input("Enter cash amount: "))
+  elif choice == "2":  # Added colon here
+    weight_gm = float(input("Enter gold weight (grams): "))
+    return weight_gm * 612.36
+  elif choice == "3":  # Added colon here
+    weight_gm = float(input("Enter silver weight (grams): "))
+    return weight_gm * 21.39
+  elif choice == "4":  # Added colon here
+    return float(input("Enter stock value: "))
+  elif choice == "5":  # Added colon here
+    return float(input("Enter business income: "))
+  else:
+    print("Invalid choice")
+    return get_zakat_asset_value()
+def calculate_zakat(asset_value):
+  if asset_value > NISSAB_GOLD:
+    return asset_value * 0.025
+  else:
+    return 0
+asset_value = get_zakat_asset_value()
+zakat_amount = calculate_zakat(asset_value)
+print(f"Zakat amount: ${zakat_amount:.2f}")
+
